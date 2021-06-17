@@ -1,0 +1,23 @@
+name: 'SPA Reporter'
+description: 'Parse and report gradle lint issues to PR'
+author: 'roncsak'
+branding:
+  icon: check
+  color: orange
+inputs:
+  gradleLintBaselineReportPath:
+    required: true
+    description: 'Relative path of baseline lint results of Gradle'
+    default: 'app/lint-baseline.xml'
+  gradleLintReportPath:
+    reuired: true
+    description: 'Relative path of lint-results.xml of Gradle'
+    default: 'app/build/reports/lint-results.xml'
+  token:
+    required: true
+    description: 'GitHub or PAT token'
+    default: ${{ github.token }}
+
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
